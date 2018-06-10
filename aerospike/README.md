@@ -7,8 +7,6 @@ Requirements
 Supported Platforms:
 - Ubuntu 14.04
 
-Depends on Cookbook:
-- tconsul
 
 Attributes
 ----------
@@ -30,7 +28,9 @@ Attributes
 |['aerospike']['mesh_seed']['ip_address']|String|Aerospike mesh seed ip address| [] |
 |['aerospike']['custom_script_path']|String|Custom script location|'/home/ubuntu'|
 |['aerospike']['aws_region']|String|AWS Region|'us-east-1'|
-|['aerospike']['consul_service_dir']|String|Consul client config directory|'/etc/consul.d/client'|
+|['aerospike']['backup_dir']|String|Aerospike backup directory apth|''/opt/aerospike/backup_data/'|
+|['aerospike']['namespace']|String|Aerospike namespace|'data'|
+|['aerospike']['s3_bucket']|String|AWS S3 path for backup|'s3://aerospike-backup'|
 
 Recipes
 ----------

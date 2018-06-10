@@ -13,7 +13,6 @@ default['aerospike']['aerospike_tools_url'] = 'http://www.aerospike.com/artifact
 default['aerospike']['mesh_seed']['ip_address'] = []
 default['aerospike']['custom_script_path'] = '/home/ec2-user'
 default['aerospike']['aws_region'] = 'us-east-1'
-default['aerospike']['consul_service_dir'] = '/etc/consul.d/client'
 default['aerospike']['backup_dir']         = '/opt/aerospike/backup_data/'
 default['aerospike']['namespace']         = 'data'
 default['aerospike']['s3_bucket'] = 's3://aerospike-backup'

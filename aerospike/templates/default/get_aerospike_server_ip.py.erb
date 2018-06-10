@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+from boto3.session import Session
+def get_aerospike_server_ip():
+    session = Session(
+                region_name=<%= "\'#{node['aerospike']['aws_region']}\'" %>
+        )
+    ec2 = session.resource('ec2')
+    instances = ec2.instances.filter(Filters=[{'Name': 'tag:Aerospike', 'Values': ['True']},{'Name': 'instance-state-name', 'Values': ['running']}])
+    aerospike_server_ip = []
+    for instance in instances:
+        aerospike_server_ip.append(instance.private_ip_address)
+    print aerospike_server_ip
+
+get_aerospike_server_ip()

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+asbackup --host <%= node['ipaddress'] %>  --namespace content --directory /opt/aerospike/backup_data//`date +%m-%d-%y`
+# Chef Name: Sync_backup_to_s3
+aws s3 sync /opt/aerospike/backup_data/<%=node['aerospike']['s3_bucket'] %>

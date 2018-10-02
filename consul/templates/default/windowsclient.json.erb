@@ -1,0 +1,17 @@
+{
+    "server": false,
+    "datacenter": "<%= node['server']['datacenter'] %>",
+    "data_dir"  : "<%= node['consul']['windows_client_config']['data_dir'] %>",
+    "node_name" : "client-<%= node['ipaddress'] %>",
+    "bind_addr" : "<%= node['ipaddress'] %>",
+    "log_level" : "INFO",
+    "enable_syslog": false,
+    "ports" : {
+                "dns" 		: -1,
+                "http" 		: 8500,
+                "rpc" 		: 8400,
+                "serf_lan"  : 8301,
+                "serf_wan"  : 8302,
+                "server" 	: 8300
+	}
+}

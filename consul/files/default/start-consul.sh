@@ -1,0 +1,19 @@
+> /usr/bin/consul-start
+
+cat /etc/init/consul.conf | tail -n 1 >> /usr/bin/consul-start && chmod +x /usr/bin/consul-start
+
+
+
+> /usr/bin/start-consul
+
+echo "nohup /usr/bin/consul-start  < /dev/null > /tmp/nohup.out 2>&1 &" >> /usr/bin/start-consul | chmod +x /usr/bin/start-consul
+
+
+
+> /usr/local/bin/stop-consul
+
+echo "ps -ef | grep consul | awk {'print \$2'} | xargs kill -9" >> /usr/local/bin/stop-consul && chmod +x /usr/local/bin/stop-consul
+
+
+
+start-consul

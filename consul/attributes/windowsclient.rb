@@ -1,0 +1,7 @@
+default['consul']['windows']['package_url'] = 'https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_windows_amd64.zip'
+default['consul']['windows']['installation_dir'] = 'C:\\Consul-Client'
+default['consul']['windows']['data_dir'] = 'C:\\Consul-Data'
+default['consul']['windows_client_config']['data_dir'] = 'C:\\\\Consul-Data'
+default['client']['windows']['client_config_dir'] = 'C:\\Consul-Config'
+default['client']['windows']['custom_script_path'] = 'C:\\Consul-Scripts'
+default['client']['windows']['python'] = 'https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi'

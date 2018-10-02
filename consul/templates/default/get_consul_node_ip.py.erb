@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+from boto3.session import Session
+def get_consul_node_ip():
+    session = Session(
+                region_name=<%= "\'#{node['consul']['aws_region']}\'" %>
+        )
+    ec2 = session.resource('ec2')
+    instances = ec2.instances.filter(Filters=[{'Name': 'tag:Consul', 'Values': ['True']},{'Name': 'instance-state-name', 'Values': ['running']}])
+    consul_node_ip = []
+    for instance in instances:
+        consul_node_ip.append(instance.private_ip_address)
+    print consul_node_ip
+    
+get_consul_node_ip()

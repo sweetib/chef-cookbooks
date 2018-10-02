@@ -1,0 +1,18 @@
+{
+    "server": true,
+    "datacenter": "<%= node['server']['datacenter'] %>",
+    "data_dir"  : "<%= node['consul']['data_dir'] %>",
+    "node_name" : "<%= node['fqdn'] %>",
+	"bind_addr" : "<%= node['ipaddress'] %>",
+    "addresses" : { "http": "<%= node['ipaddress'] %>"},
+    "log_level" : "INFO",
+    "enable_syslog": true,
+    "ports" : {
+                "dns" 		: -1,
+                "http" 		: 8500,
+                "rpc" 		: 8400,
+                "serf_lan"  : 8301,
+                "serf_wan"  : 8302,
+                "server" 	: 8300
+	}
+}

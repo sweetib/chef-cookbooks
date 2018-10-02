@@ -1,0 +1,34 @@
+#!/usr/bin/python
+import urllib
+import os
+import time
+from boto3.session import Session
+def get_consul_node_ip():
+    session = Session(
+                region_name=<%= "\'#{node['consul']['aws_region']}\'" %>
+        )
+    ec2 = session.resource('ec2')
+    instances = ec2.instances.filter(Filters=[{'Name': 'tag:Consul', 'Values': ['True']}])
+    consul_node_ip = []
+    for instance in instances:
+        consul_node_ip.append(instance.private_ip_address)
+    print consul_node_ip
+    join_consul_node(consul_node_ip)
+
+def join_consul_node(consul_node_ip):
+        print "in joing consul node()"
+        try:
+            while(str(urllib.urlopen("http://localhost:8500/v1/status/peers").getcode()) != "200"):
+                    for ip in consul_node_ip:
+                            print "in for"
+                            command = "cd <%= node['configuartion-service']['consul_config_dir'] %> && consul join %s" %ip
+                            try:
+                                os.system(command)
+                            except:
+                                pass
+                            time.sleep(5)
+        except:
+            join_consul_node(consul_node_ip)
+
+
+get_consul_node_ip()

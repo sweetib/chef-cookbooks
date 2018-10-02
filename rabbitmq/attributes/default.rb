@@ -1,0 +1,11 @@
+default['rabbitmq']['repo_url'] = "http://www.rabbitmq.com/debian/"
+default['rabbitmq']['source_list_path'] = '/etc/apt/sources.list.d/rabbitmq.list'
+default['rabbitmq']['certificate_url'] = 'http://www.rabbitmq.com/rabbitmq-signing-key-public.asc'
+default['rabbitmq']['erlang_cookie_filepath'] = '/var/lib/rabbitmq/.erlang.cookie'
+default['rabbitmq']['erlang_cookie'] = 'XXXXXXXYYYYYYYZZZZZZ'
+default['rabbitmq']['custom_python_module'] = '/home'
+default['rabbitmq']['nodes_ip'] = []
+default['rabbitmq']['web_ui_user'] = 'rabbitmq'
+default['rabbitmq']['web_ui_userpasswd'] = 'rabbitmq'
+default['rabbitmq']['rabbitmq_port'] = 5672
+default['rabbitmq']['rabbitmq_ui_port'] = 15672

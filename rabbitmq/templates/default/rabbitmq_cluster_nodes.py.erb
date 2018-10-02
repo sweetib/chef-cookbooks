@@ -1,0 +1,17 @@
+#!/usr/bin/python
+
+import os
+from boto3.session import Session
+def get_rabbitmq_server_ip():
+    session = Session(region_name='us-east-1')
+    ec2 = session.resource('ec2')
+    seed_instances = ec2.instances.filter(Filters=[{'Name' : 'tag:RabbitMQ-Server', 'Values' : ['True']},{'Name': 'instance-state-name', 'Values': ['running']}])
+
+    rabbitmq_node_ip = []
+    for instance in seed_instances:
+        prvt_dns = instance.private_dns_name.replace('.ec2.internal','')
+        rabbitmq_node_ip.append(prvt_dns)
+    print rabbitmq_node_ip
+
+if __name__ == "__main__":
+    get_rabbitmq_server_ip()
